@@ -6,7 +6,7 @@ use crate::{
 use alloc::vec::Vec;
 use core::cmp::min;
 use primitive_types::{H256, U256};
-use sha3::{Digest, Keccak256};
+use sha3::{Digest, Keccak256, Sha3_256};
 
 pub fn sha3<H: Handler>(runtime: &mut Runtime) -> Control<H> {
 	pop_u256!(runtime, from, len);
@@ -21,7 +21,7 @@ pub fn sha3<H: Handler>(runtime: &mut Runtime) -> Control<H> {
 		runtime.machine.memory_mut().get(from, len)
 	};
 
-	let ret = Keccak256::digest(data.as_slice());
+	let ret = Sha3_256::digest(data.as_slice());
 	push!(runtime, H256::from_slice(ret.as_slice()));
 
 	Control::Continue
