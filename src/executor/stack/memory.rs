@@ -22,7 +22,7 @@ pub struct MemoryStackSubstate<'config> {
 	parent: Option<Box<MemoryStackSubstate<'config>>>,
 	logs: Vec<Log>,
 	accounts: BTreeMap<H160, MemoryStackAccount>,
-	storages: BTreeMap<(H160, H256), H256>,
+	pub storages: BTreeMap<(H160, H256), H256>,
 	deletes: BTreeSet<H160>,
 }
 
@@ -396,7 +396,7 @@ impl<'config> MemoryStackSubstate<'config> {
 #[derive(Clone, Debug)]
 pub struct MemoryStackState<'backend, 'config, B> {
 	backend: &'backend B,
-	substate: MemoryStackSubstate<'config>,
+	pub substate: MemoryStackSubstate<'config>,
 }
 
 impl<'backend, 'config, B: Backend> Backend for MemoryStackState<'backend, 'config, B> {
