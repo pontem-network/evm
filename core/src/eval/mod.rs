@@ -1,8 +1,8 @@
 #[macro_use]
 mod macros;
-mod arithmetic;
-mod bitwise;
-mod misc;
+pub mod arithmetic;
+pub mod bitwise;
+pub mod misc;
 
 use crate::{ExitError, ExitReason, ExitSucceed, Machine, Opcode};
 use core::ops::{BitAnd, BitOr, BitXor};
