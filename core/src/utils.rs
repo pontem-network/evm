@@ -26,7 +26,7 @@ impl I256 {
 	}
 
 	pub fn minus_one() -> I256 {
-		I256(Sign::Minus, U256::MAX)
+		I256(Sign::Minus, U256::from(1))
 	}
 	/// Minimum value of I256.
 	pub fn min_value() -> I256 {
